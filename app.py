@@ -51,12 +51,49 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def index():
     return '''
     <!doctype html>
-    <title>Upload File</title>
-    <h1>Upload File</h1>
-    <form method=post enctype=multipart/form-data action="/upload">
-    <input type=file name=file>
-    <input type=submit value=Upload>
-    </form>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>MarcGenie</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            .button {
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            .button:hover {
+                background-color: #45a049;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container"></div>
+            <h1>Welcome to MarcGenie!</h1>
+            <form method="post" enctype="multipart/form-data" action="/upload">
+                <label for="fileInput">Choose MARC file:</label>
+                <input type="file" id="fileInput" name="marcFile" accept=".mrk,.mrc">
+                <br><br>
+                <label for="outputName">Output File Name:</label>
+                    <input type="text" id="outputName" name="outputName" required>
+                    <br><br>
+                <button type="submit" class="button">Process File</button>
+            </form>
+        </div>
+    </body>
+    </html>
     '''
 
 @app.route('/upload', methods=['POST'])
