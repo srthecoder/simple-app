@@ -2,7 +2,7 @@ from flask import Flask, request, send_from_directory
 import os
 
 app = Flask(__name__)
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = '/tmp/uploads'  # Use /tmp directory in serverless environments
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -41,4 +41,4 @@ def download_file():
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
