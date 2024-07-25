@@ -91,6 +91,11 @@ def index():
                     <br><br>
                 <button type="submit" class="button">Process File</button>
             </form>
+            <h1>Download File</h1>
+            <form method=get action="/download">
+            <input type=text name=filename>
+            <input type=submit value=Download>
+            </form>
         </div>
     </body>
     </html>
